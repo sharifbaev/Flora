@@ -1,0 +1,117 @@
+<div
+  *ngIf="isOpen"
+  class="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300"
+  (click)="closeMenu()">
+</div>
+
+<div class="fixed top-0 left-0 h-full w-72 bg-white/90 backdrop-blur-md z-50 shadow-2xl transform transition-all duration-300 ease-out"
+     [ngClass]="isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'">
+
+  <div class="flex items-center justify-between p-4 border-b">
+    <span class="font-bold text-lg">Меню</span>
+    <button (click)="closeMenu()" class="p-2 rounded hover:bg-gray-100 transition">
+      <icon name="x"></icon>
+    </button>
+  </div>
+
+  <nav class="flex flex-col gap-y-4 p-4 text-lg">
+    <a routerLink="/home"
+       routerLinkActive="text-primary font-semibold"
+       [routerLinkActiveOptions]="{ exact: true }"
+       class="transition hover:text-primary"
+       (click)="closeMenu()">
+      Главная
+    </a>
+
+    <a routerLink="/categories"
+       routerLinkActive="text-primary font-semibold"
+       class="transition hover:text-primary"
+       (click)="closeMenu()"
+    >
+      Категории
+    </a>
+
+    <a routerLink="/delivery"
+       routerLinkActive="text-primary font-semibold"
+       class="transition hover:text-primary"
+       (click)="closeMenu()"
+    >
+      Доставка и оплата
+    </a>
+
+    <a routerLink="/stores"
+       routerLinkActive="text-primary font-semibold"
+       class="transition hover:text-primary"
+       (click)="closeMenu()"
+    >
+      Магазины
+    </a>
+
+    <a class="bg-primary text-white rounded px-3 py-1 hover:opacity-90 transition"
+            (click)="toLogin()">
+      Вход / Регистрация
+    </a>
+  </nav>
+</div>
+
+<header class="sticky top-0 z-50 py-5 px-4 md:px-10 bg-white/80 backdrop-blur-md shadow-sm">
+  <nav class="flex items-center justify-between">
+    <p class="text-xl font-bold text-primary italic">
+      Flora
+    </p>
+
+    <ul class="hidden md:flex gap-x-10 font-light">
+      <li routerLinkActive="text-primary border-b-2 border-primary"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="pb-1 hover:text-primary transition-all duration-200">
+        <a routerLink="/home">ГЛАВНАЯ</a>
+      </li>
+
+      <li routerLinkActive="text-primary border-b-2 border-primary" class="pb-1 hover:text-primary transition-all duration-200">
+        <a routerLink="/categories">КАТЕГОРИИ</a>
+      </li>
+
+      <li routerLinkActive="text-primary border-b-2 border-primary" class="pb-1 hover:text-primary transition-all duration-200">
+        <a routerLink="/delivery">ДОСТАВКА И ОПЛАТА</a>
+      </li>
+
+      <li routerLinkActive="text-primary border-b-2 border-primary" class="pb-1 hover:text-primary transition-all duration-200">
+        <a routerLink="/stores">МАГАЗИНЫ</a>
+      </li>
+    </ul>
+
+    <div class="flex items-center gap-x-3">
+      <div class="hidden md:flex gap-x-3">
+        <button class="hover:scale-110 transition">
+          <icon name="heart"></icon>
+        </button>
+
+        <button class="hover:scale-110 transition relative">
+          <icon name="shopping-cart"></icon>
+          <span class="absolute -top-1 -right-1 text-xs bg-danger text-white rounded-full px-1">
+            2
+          </span>
+        </button>
+      </div>
+
+      <button class="hidden md:block bg-primary text-white rounded px-3 py-1 hover:opacity-90 transition"
+              (click)="toLogin()">
+        Вход / Регистрация
+      </button>
+      <button class="md:hidden relative w-10 h-10 flex items-center justify-center hover:scale-110 transition"
+              (click)="toggleMenu()">
+        <span class="absolute transition-all duration-300" [ngClass]="isOpen ? 'opacity-0 rotate-90 scale-75' : 'opacity-100 rotate-0 scale-100'">
+          <icon name="menu"></icon>
+        </span>
+
+        <span
+          class="absolute transition-all duration-300"
+          [ngClass]="isOpen ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'">
+          <icon name="x"></icon>
+        </span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<router-outlet></router-outlet>

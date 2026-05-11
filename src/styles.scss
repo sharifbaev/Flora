@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "@fontsource-variable/manrope";
+
+@font-face {
+  font-family: 'Manrope';
+  //src: url('/assets/fonts/manrope/Manrope-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.p-sidebar {
+  z-index: 1000 !important;
+}
+
+/* track active line */
+.custom-slider .p-slider-range {
+  background: #8A4D4A !important; /* твой primary */
+}
+
+/* slider handle */
+.custom-slider .p-slider-handle {
+  border: 2px solid #8A4D4A !important;
+  background: white !important;
+}
+
+/* track background */
+.custom-slider .p-slider {
+  background: #E7E5E4 !important;
+}
+
+:root {
+  --header-height: 72px;
+}
