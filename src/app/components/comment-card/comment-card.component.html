@@ -3,25 +3,30 @@
     <div>
       <div class="flex justify-between items-center">
         <p class="font-semibold">{{ comment.user }}</p>
-        <p class="font-thin">{{ comment.date | formatDate: 'long' }}</p>
+        <p class="font-thin">{{ comment.date | formatDate: "long" }}</p>
       </div>
       <div class="flex items-center gap-x-1">
         <div class="flex items-center">
           <ng-container *ngFor="let star of getStarArray(comment.rating)">
-            <div class="relative w-[18px] h-[18px]">
+            <div class="relative h-[18px] w-[18px]">
               <lucide-icon
                 name="star"
                 class="text-gray-300 absolute top-0 left-0"
                 strokeWidth="2"
-                size="18">
+                size="18"
+              >
               </lucide-icon>
 
-              <div class="overflow-hidden absolute top-0 left-0 h-full" [style.width.%]="star.fill">
+              <div
+                class="overflow-hidden absolute top-0 left-0 h-full"
+                [style.width.%]="star.fill"
+              >
                 <lucide-icon
                   name="star"
                   class="text-yellow-500"
                   strokeWidth="2"
-                  size="18">
+                  size="18"
+                >
                 </lucide-icon>
               </div>
             </div>
